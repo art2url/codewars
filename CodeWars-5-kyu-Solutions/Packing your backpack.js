@@ -18,17 +18,18 @@ The maximum score will be 29. This number comes from bringing items 1, 3 and 4.
 Note: Your solution will have to be efficient as the running time of your algorithm will be put to a test.
 */
 
-function packBagpack(scores, weights, capacity) {}
+function packBagpack(scores, weights, capacity) {
+  const n = scores.length;
+  const dp = Array(capacity + 1).fill(0);
 
-describe('Fixed tests', function () {
-  it('Example tests', function () {
-    Test.assertEquals(packBagpack([15, 10, 9, 5], [1, 5, 3, 4], 8), 29);
-    Test.assertEquals(
-      packBagpack([20, 5, 10, 40, 15, 25], [1, 2, 3, 8, 7, 4], 10),
-      60
-    );
-  });
-});
+  for (let i = 0; i < n; i++) {
+    for (let w = capacity; w >= weights[i]; w--) {
+      dp[w] = Math.max(dp[w], dp[w - weights[i]] + scores[i]);
+    }
+  }
+
+  return dp[capacity];
+}
 
 console.log(packBagpack([15, 10, 9, 5], [1, 5, 3, 4], 8)); // 29
 console.log(packBagpack([20, 5, 10, 40, 15, 25], [1, 2, 3, 8, 7, 4], 10)); // 60
