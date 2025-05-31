@@ -67,7 +67,7 @@ function sudoku(puzzle) {
   function findEmptyCell(puzzle) {
     for (let row = 0; row < 9; row++) {
       for (let col = 0; col < 9; col++) {
-        if (puzzle[row][col] === 0) return { row, col };
+        if (puzzle[row][col] === 0) return {row, col};
       }
     }
     return null;
@@ -77,7 +77,7 @@ function sudoku(puzzle) {
     const emptyCell = findEmptyCell(puzzle);
     if (!emptyCell) return true;
 
-    const { row, col } = emptyCell;
+    const {row, col} = emptyCell;
 
     for (let num = 1; num <= 9; num++) {
       if (isValidPlacement(puzzle, row, col, num)) {
