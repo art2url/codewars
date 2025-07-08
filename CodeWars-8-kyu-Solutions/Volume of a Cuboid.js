@@ -12,7 +12,7 @@ class Kata {
     console.log(`Height: ${height}`);
 
     const volume = length * width * height;
-    console.log(`Volume = ${length} × ${width} × ${height} = ${volume}`);
+    console.log(`Volume = ${length} x ${width} x ${height} = ${volume}`);
     console.log('---');
 
     return volume;
